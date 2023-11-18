@@ -1,0 +1,57 @@
+<html>
+    <head>
+        <title>그랩마켓</title>
+        <link rel="stylesheet" href="index.css" type="text/css"/>
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    </head>
+    <body>
+        <div id="header">
+            <div id="header-area">
+                <img src="images/icons/logo.png" />
+            </div>
+        </div>
+        <div id="body">
+            <div id="banner">
+                <img src="images/banners/banner1.png"/>
+            </div>
+            <h1>판매되는 상품들</h1>
+            <div id= "product-list">
+                
+            </div>
+        </div>
+        <div id="footer"></div>
+    </body>
+    <script>
+        axios.get('https://89b31317-d448-414e-8434-4b9625326e64.mock.pstmn.io/product')
+        .then(function(result){
+            console.log('통신결과 : ', result);
+            const products = result.data.products;
+            let productHtml = '';
+            for(var i=0; i<products.length; i++){
+                let product = products[i];
+                //product_list에 product-card를 추가하는 html 코드 
+                productHtml += 
+                    '<div class = "product-card">'+
+                        '<div>'+
+                            '<img class="product-img" src="'+product.imageUrl+'"" />'+
+                        '</div>'+
+                        '<div class="product-contents">'+
+                            ' <span class="product-name">'+product.name+'</span>'+
+                            ' <span class="product-price">'+product.price+'원</span>'+
+                            ' <div class="product-seller">'+
+                            ' <img class="product-avatar" src="images/icons/avatar.png" />'+
+                            ' <span>'+product.seller+'</span>'+
+                            ' </div>'+
+                        '</div>'+
+                    '</div>';
+            }
+
+        document.querySelector("#product-list").innerHTML = productHtml;
+        }).catch(function(error){
+            console.error('error발생:',error);
+        });
+
+        
+    </script>
+</html>
+

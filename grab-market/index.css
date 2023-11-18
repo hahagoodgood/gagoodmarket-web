@@ -11,8 +11,7 @@
 }
 
 #body {
-    height: 100vh; /* vh:윈도우의 높이를 기준으로 하는 단위
-                    vw: 윈도우의 넓이를 기준으로 하는 단위 */
+    height: 100%;
     width: 1024px;
     margin: 0 auto;
     padding-bottom: 24px;
@@ -89,8 +88,3 @@
 .product-avatar {
     width: 24px;
 }
-
-.product-link {
-    color: inherit; /* a테그의 색갈 제거 */
-    text-decoration: none; /* a테그의 밑줄 제거 */ 
-  }
