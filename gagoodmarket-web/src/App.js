@@ -4,16 +4,28 @@
 
 import "./App.css";
 import MainPageComponent from "./main/index.js"; //메인폴더의 index 파일의 MainPageComponent 함수 사용
-import { BrowserRouter as Switch, Route } from "react-router-dom"; //react-router-dom페이지
+import { BrowserRouter as Switch, Route, Link, useHistory } from "react-router-dom"; //react-router-dom페이지
 import UploadPage from "./upload/index.js";
 import ProductPage from "./proudct/index.js";
+import {Button} from "antd";
+import {DownloadOutlined} from "@ant-design/icons"
 
 function App() {
+  const history = useHistory();//페이지 이동을 함수로 할 수 있다.
   return (
     <div>
       <div id="header">
         <div id="header-area">
-          <img src="/images/icons/logo.png" />
+          <Link to="/">
+            <img src="/images/icons/logo.png" />
+          </Link>
+          <Button size="large"
+          onClick={function(){
+            history.push("/upload"); //upload로 이동하는 함수로 useHistory를 이용한다.
+          }}
+          icon={<DownloadOutlined/>}>
+            상품 업로드
+          </Button>
         </div>
       </div>
       <div id="body">
