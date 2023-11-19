@@ -20,12 +20,6 @@ function MainpageComponent() {
 
   return (
     <div>
-      <div id="header">
-        <div id="header-area">
-          <img src="images/icons/logo.png" />
-        </div>
-      </div>
-      <div id="body">
         <div id="banner">
           <img src="images/banners/banner1.png" />
         </div>
@@ -34,7 +28,7 @@ function MainpageComponent() {
           {products.map(function (product, index) { /* product배열의 개수 만큼 반복해주는 함수 map을 이용하여 반복 */
             return (
               <div className="product-card">
-                <Link className="product-link" to={`/products/${index}`}> {/* link는 <a>테그로 변경되어 실행된다.
+                <Link className="product-link" to={`/products/${product.id}`}> {/* link는 <a>테그로 변경되어 실행된다.
                                                                             index는 id를 나타낸다.*/}                                                  
                   <div>
                     <img className="product-img" src={product.imageUrl} />
@@ -52,12 +46,9 @@ function MainpageComponent() {
                   </div>
                 </Link>
               </div>
-              
             );
           })}
         </div>
-      </div>
-      <div id="footer"></div>
     </div>
   );
 }
