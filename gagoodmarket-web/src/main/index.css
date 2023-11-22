@@ -1,11 +1,12 @@
 #banner{
     height: 300px;
-    background-color: yellow;
+    overflow: hidden;
 }
 
 #banner > img{
     width:100%;
-    height: 300px;
+    /* height: 500px; */
+    
 }
 
 #body > h1 {
@@ -19,13 +20,16 @@
 }
 
 .product-card{
-    width: 180px;
-    height:300px;
-    margin-right: 12px;
+    width: 190px;
+    height:350px;
+    margin-left: 6px;
+    margin-right: 6px;
     margin-bottom: 12px;
     border: 1px solid rgb(230, 230, 230);
     border-radius: 12px;
     overflow: hidden;
+    display: flex;
+    justify-content: space-between;
 }
 
 .product-img {
@@ -49,6 +53,11 @@
     margin-top: 4px;
 }
 
+.product-seller {
+    display: flex;
+    align-items: center;
+  }
+
 .product-avatar {
     width: 24px;
 }
@@ -56,4 +65,21 @@
 .product-link {
     color: inherit; /* a테그의 색갈 제거 */
     text-decoration: none; /* a테그의 밑줄 제거 */ 
+  }
+
+.product-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 12px;
+    
+  }
+  
+  .product-date {
+    font-size: 12px;
+    color: rgb(136, 136, 136);
+  }
+
+  #product_headline{
+    margin-top: 8px;
   }

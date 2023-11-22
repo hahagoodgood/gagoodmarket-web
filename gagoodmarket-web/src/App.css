@@ -14,7 +14,8 @@ body,
   height: 64px;
   display: flex;
   justify-content: center;
-  border-bottom: 1px solid gray;
+  border-bottom: 1px solid rgb(112, 79,72);
+  background-color: rgb(247, 240, 232);
 }
 
 #header-area {
@@ -23,6 +24,7 @@ body,
   display: flex;
   align-items: center;
   justify-content: space-between; /* 자식들을 양 끝으로 배치하는 Css */
+  
 }
 
 #header-area img {
@@ -33,10 +35,17 @@ body,
 #body {
   height: 100vh;
   width: 1024px;
-  margin: 0 auto;
+  margin: 24px auto;
   padding-bottom: 24px;
 }
 #footer {
   height: 200px;
   background-color: rgb(230, 230, 230);
+}
+
+#uploadbtn{
+  color: rgb(112, 79,72);
+  font-weight: 600;
+  border-color:rgb(112, 79,72);
+  
 }

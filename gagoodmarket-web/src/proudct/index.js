@@ -3,6 +3,8 @@ import { useParams } from "react-router-dom"; /* 파라미터 가져오는 함�
 import axios from "axios"; //axios는 서버간 통신을 위한 모듈
 import { useEffect, useState } from "react";
 import "./index.css";
+import {API_URL} from "../config/constants.js"
+import dayjs from "dayjs";
 
 function ProductPage() {
   const {id} = useParams(); /* id파라니터를 가져온다. */
@@ -14,9 +16,9 @@ function ProductPage() {
 
   useEffect(function(){ /* 최초 1번만 목서버와 통신하기 위한 userEffect */
     axios
-    .get(`https://89b31317-d448-414e-8434-4b9625326e64.mock.pstmn.io/product/${id}`)//Template Literal은 `(백틱)사이에 있을 때 문자열을 끊지 않고 변수${변수}형태로 사용할 수 있도록 해준다.
+    .get(`${API_URL}/products/${id}`)//Template Literal은 `(백틱)사이에 있을 때 문자열을 끊지 않고 변수${변수}형태로 사용할 수 있도록 해준다.
     .then(function (result) {
-      setProduct(result.data);
+      setProduct(result.data.product);
     })
     .catch(function (error) {
       console.error("에러 발생 : ", error);
@@ -31,7 +33,7 @@ function ProductPage() {
       return (
         <div>
           <div id="image-box">
-            <img src={"/" + product.imageUrl}></img>
+            <img src={`${API_URL}/${product.imageUrl}`}></img>
           </div>
           <div id="profile-box">
             <img src="/images/icons/avatar.png"/>
@@ -39,9 +41,10 @@ function ProductPage() {
           </div>
           <div id="contents-box">
             <div id="name">{product.name}</div>
-            <div id="price">{product.price}</div>
-            <div id="createdAt">2023년 11월 19일</div>
-            <div id="description">{product.description}</div>
+            <div id="price">{product.price.toLocaleString('en-US')}원</div>
+            {/* 등록된 시간을 dayjs를 이용하여 나타내는 코드 */}
+            <div id="createdAt">{dayjs(product.createdAt).format("YYYY년 MM월 DD일")}</div>
+            <pre id="description">{product.description}</pre>
           </div>
         </div>
       );
