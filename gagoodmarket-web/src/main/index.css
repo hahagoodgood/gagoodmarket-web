@@ -1,16 +1,21 @@
-#banner{
-    height: 300px;
+.banner{
+    max-height: 400px;
     overflow: hidden;
+    display : flex;
+    align-items: center;
+    border-radius: 40px;
 }
 
-#banner > img{
-    width:100%;
-    /* height: 500px; */
+.banner > img{
+    width:100%; 
+     
+    object-fit: contain;
     
 }
 
 #body > h1 {
     margin-top: 16px;
+    margin-bottom: 16px;
 }
 
 #product-list {
@@ -30,11 +35,23 @@
     overflow: hidden;
     display: flex;
     justify-content: space-between;
+    position: relative;
+}
+
+.product-blur{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ffffffaa;
+    pointer-events: none;
 }
 
 .product-img {
     width: 100%;
     height: 210px;
+    object-fit: contain;
 }
 
 .product-contents{

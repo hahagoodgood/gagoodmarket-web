@@ -6,8 +6,11 @@ import dayjs from "dayjs"; /* 날짜를 원하는 형식으로 변환해주는 �
 import relativeTime from "dayjs/plugin/relativeTime"; /* 날짜관련 정보를 쉽게 가져오는 플러그인 */
 import { API_URL } from "../config/constants.js";
 import { Divider, Carousel } from "antd";
+import "dayjs/locale/ko.js";
+
 
 dayjs.extend(relativeTime); /* dayjs 확장 */
+dayjs.locale("ko");
 
 function MainpageComponent() {
   const [products, setProducts] = React.useState([]);
@@ -39,12 +42,16 @@ function MainpageComponent() {
   return (
     <div>
       {/* Carousel을 사용하여 이미지 슬라이드를 구현하는 테그입니다. */}
-      <Carousel autoplay autoplaySpeed={6000}> {/* autoplay는 자동으로 넘겨주며 60초마다 한개씩 넘김니다. */}
+      <Carousel autoplay autoplaySpeed={6000}>
+        {" "}
+        {/* autoplay는 자동으로 넘겨주며 60초마다 한개씩 넘김니다. */}
         {banners.map((banner, index) => {
           return (
-            <Link to={banner.href}>{/* 클릭했을때 설정한 곳으로 이동이 될 수 있도록 해주는 link입니다. */}
-              <div id="banner"> 
-                <img src={`${API_URL}/${banner.imageUrl}`} /> {/* API 통신을 통해 서버에서 이미지를 불러와 줍니다. */}
+            <Link to={banner.href}>
+              {/* 클릭했을때 설정한 곳으로 이동이 될 수 있도록 해주는 link입니다. */}
+              <div className="banner">
+                <img src={`${API_URL}/${banner.imageUrl}`} />{" "}
+                {/* API 통신을 통해 서버에서 이미지를 불러와 줍니다. */}
               </div>
             </Link>
           );
@@ -58,6 +65,7 @@ function MainpageComponent() {
             product.price.toLocaleString("en-US");
           return (
             <div className="product-card">
+              {product.soldout === 1 && <div className="product-blur" />}
               <Link className="product-link" to={`/products/${product.id}`}>
                 {" "}
                 {/* link는 <a>테그로 변경되어 실행된다.
@@ -88,7 +96,6 @@ function MainpageComponent() {
             </div>
           );
         })}
-        <Divider />
       </div>
     </div>
   );
